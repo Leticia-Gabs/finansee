@@ -1,42 +1,35 @@
-MoneyFlow
-Sobre o Projeto
-Este projeto, MoneyFlow, é um gerenciador de despesas pessoais desenvolvido em Java com o framework Spring Boot. Ele foi criado para a disciplina de Programação Orientada a Objetos (POO) e tem como objetivo ajudar os usuários a controlar suas finanças de forma simples e eficaz.
+# MoneyFlow
 
-Principais Funcionalidades
-Controle de Assinaturas Recorrentes: Gerencie e monitore serviços como Netflix, Spotify e outros pagamentos mensais.
+**MoneyFlow** é um gerenciador de despesas pessoais desenvolvido em **Java** com o framework **Spring Boot**. O projeto foi criado para a disciplina de **Programação Orientada a Objetos (POO)** e tem como objetivo ajudar os usuários a controlar suas finanças de forma simples e eficaz.
 
-Notificações por E-mail: Receba alertas automáticos sobre o vencimento de suas assinaturas.
+## Funcionalidades
 
-Sugestões de Investimento: Um sistema que oferece recomendações básicas de investimento, ideal para iniciantes.
+### 1. Controle de Assinaturas Recorrentes
+- Gerencie e monitore serviços como **Netflix**, **Spotify**, e outros pagamentos mensais.
 
-Tecnologias Utilizadas
-O projeto é construído com as seguintes tecnologias:
+### 2. Notificações por E-mail
+- Receba alertas automáticos sobre o vencimento de suas assinaturas para nunca esquecer de um pagamento.
 
-Java: A linguagem de programação principal.
+### 3. Sugestões de Investimento
+- Sistema que oferece recomendações básicas de investimento, ideal para iniciantes que buscam começar a investir de maneira simples e sem complicação.
 
-Spring Boot: Para criar uma aplicação web robusta e escalável.
+## Tecnologias Utilizadas
 
-Maven: Gerenciador de dependências.
+- **Java**: A linguagem de programação principal.
+- **Spring Boot**: Framework para criar uma aplicação web robusta e escalável.
+- **Maven**: Gerenciador de dependências para simplificar o build e gerenciamento de bibliotecas.
+- **Banco de Dados**:
+  - **H2**: Banco de dados em memória para desenvolvimento.
+  - **PostgreSQL**: Banco de dados para produção.
 
-Banco de Dados: H2 para desenvolvimento e PostgreSQL para produção.
+## Instalação e Execução
 
-Instalação e Execução
-Para rodar o projeto em sua máquina local, siga os passos abaixo:
+Siga os passos abaixo para rodar o projeto em sua máquina local:
 
-Clone o Repositório:
+### 1. Clone o Repositório
 
-Bash
+Clone o repositório para sua máquina local usando o comando:
 
+```bash
 git clone https://github.com/seu-usuario/seu-projeto.git
 cd seu-projeto
-Compile e Execute:
-
-Abra o projeto em sua IDE (IntelliJ, VS Code, etc.).
-
-Compile e execute a classe main.
-
-Ou, use o Maven:
-
-Bash
-
-mvn spring-boot:run
