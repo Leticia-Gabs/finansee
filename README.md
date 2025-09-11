@@ -15,7 +15,7 @@
 
 ---
 
-### Sessão Entrega 1
+### Sessão Entrega 2
 
 Aqui você pode encontrar a documentação e os protótipos da nossa primeira entrega.
 
@@ -25,3 +25,4 @@ Aqui você pode encontrar a documentação e os protótipos da nossa primeira en
   - [🔗 Link para o Figma](https://www.figma.com/design/4wH4L6HfMEiwLSlrT983Lf/Untitled?t=UuScbsbhlYCsmGpJ-1)
 - 🎥 **Screencast**
   - [🔗 Link para o YouTube](https://www.youtube.com/watch?v=M-WrPasXDeQ)
+
