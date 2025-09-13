@@ -24,6 +24,7 @@ Aqui você pode encontrar a documentação e os protótipos da nossa primeira en
 - 🎨 **Protótipo Lo-Fi**
   - [🔗 Link para o Figma](https://www.figma.com/design/4wH4L6HfMEiwLSlrT983Lf/Untitled?t=UuScbsbhlYCsmGpJ-1)
 - 🎥 **Screencast**
-  - [🔗 Link para o YouTube](https://www.youtube.com/watch?v=IQCycLGGYUE)
+  - [🔗 Link para o YouTube](https://youtu.be/TrUeBKmW7wQ?si=ryNm6PwUTuZHav1W)
+
 
 
