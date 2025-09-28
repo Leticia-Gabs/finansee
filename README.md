@@ -37,11 +37,14 @@ Aqui você pode encontrar a documentação e os protótipos da nossa primeira en
 
 Aqui você vai encontrar as histórias de usuário que estão em andamento e o screencast do site.
 
-- **Histórias de Usuário em Andamento**  
-  [link]
+- **Histórias de Usuário Concluídas [Quadro Trello]**
+ 
+  <img width="261" height="277" alt="image" src="https://github.com/user-attachments/assets/44906aa5-d1cf-4082-9e79-7f368eb83ee0" />
+
 
 - **Screencast do Site**  
   [link]
+
 
 
 
