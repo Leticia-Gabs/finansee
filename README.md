@@ -30,6 +30,8 @@ Aqui você pode encontrar a documentação e os protótipos da nossa primeira en
 
 - **Link repositório front:**  
   [finansee-front](https://github.com/dayvidcristiano/finansee-web.git)
+  
+---
 
 ### Sessão Entrega 3
 
@@ -40,5 +42,6 @@ Aqui você vai encontrar as histórias de usuário que estão em andamento e o s
 
 - **Screencast do Site**  
   [link]
+
 
 
