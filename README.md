@@ -6,12 +6,12 @@
 
 ### Funcionalidades
 
-- 📊 **Dashboard Interativo**: para visualização clara das finanças.
-- 💸 **Registro de Entradas e Saídas**: de despesas e receitas.
-- 🏷️ **Personalização de Categorias**: conforme as necessidades do usuário.
-- 💳 **Controle de Assinaturas e Limite de Orçamento**: com alertas para te manter no controle.
-- 📑 **Geração de Relatórios Detalhados**: por período.
-- 📤 **Exportação de Dados**: em **.csv**, **.xlsx** e **.pdf**.
+- **Dashboard Interativo**: para visualização clara das finanças.  
+- **Registro de Entradas e Saídas**: de despesas e receitas.  
+- **Personalização de Categorias**: conforme as necessidades do usuário.  
+- **Controle de Assinaturas e Limite de Orçamento**: com alertas para te manter no controle.  
+- **Geração de Relatórios Detalhados**: por período.  
+- **Exportação de Dados**: em **.csv**, **.xlsx** e **.pdf**.  
 
 ---
 
@@ -19,12 +19,14 @@
 
 Aqui você pode encontrar a documentação e os protótipos da nossa primeira entrega.
 
-- 📝 **Histórias de Usuário**
-  - [🔗 Link para o Google Docs](https://docs.google.com/document/d/1YpY6v586SQlHsqJYBKwsifRjCLia-7XnGeL71hH13EA/edit?usp=sharing)
-- 🎨 **Protótipo Lo-Fi**
-  - [🔗 Link para o Figma](https://www.figma.com/design/4wH4L6HfMEiwLSlrT983Lf/Untitled?t=UuScbsbhlYCsmGpJ-1)
-- 🎥 **Screencast**
-  - [🔗 Link para o YouTube](https://youtu.be/TrUeBKmW7wQ?si=ryNm6PwUTuZHav1W)
+- **Histórias de Usuário**  
+  [Link para o Google Docs](https://docs.google.com/document/d/1YpY6v586SQlHsqJYBKwsifRjCLia-7XnGeL71hH13EA/edit?usp=sharing)
 
+- **Protótipo Lo-Fi**  
+  [Link para o Figma](https://www.figma.com/design/4wH4L6HfMEiwLSlrT983Lf/Untitled?t=UuScbsbhlYCsmGpJ-1)
 
+- **Screencast**  
+  [Link para o YouTube](https://youtu.be/TrUeBKmW7wQ?si=ryNm6PwUTuZHav1W)
 
+- **Link repositório front:**  
+  [finansee-front](https://github.com/dayvidcristiano/finansee-web.git)
