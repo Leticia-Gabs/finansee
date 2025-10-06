@@ -15,7 +15,7 @@
 
 ---
 
-### Sessão Entrega 2
+### Sessão Entrega 1
 
 Aqui você pode encontrar a documentação e os protótipos da nossa primeira entrega.
 
@@ -28,28 +28,29 @@ Aqui você pode encontrar a documentação e os protótipos da nossa primeira en
 - **Screencast**  
   [Link para o YouTube](https://youtu.be/TrUeBKmW7wQ?si=ryNm6PwUTuZHav1W)
 
-- **Link repositório front:**  
-  [finansee-front](https://github.com/dayvidcristiano/finansee-web.git)
-  
----
+- **Link repositório back:**  
+  [finansee](https://github.com/Leticia-Gabs/finansee.git)
+--- 
 
-### Sessão Entrega 3
+### Sessão Entrega 2
 
 Aqui você vai encontrar as histórias de usuário que estão em andamento, o screencast do site e o issue/bug tracker.
 
 - **Histórias de Usuário Concluídas [Quadro Trello]**
  
-  ![image](https://github.com/user-attachments/assets/44906aa5-d1cf-4082-9e79-7f368eb83ee0)
+  <img width="278" height="270" alt="image" src="https://github.com/user-attachments/assets/4f9a64ca-09da-49be-b64b-4098d327183e" />
 
 - **Screencast do Site**  
-  [link](#)
+  https://youtu.be/66oUgMDzWVs
+
+    **00:01 – HU01: Gerenciar Despesas**
+    O usuário pode registrar, visualizar, editar e excluir despesas. Cada despesa contém valor, data, descrição, categoria e forma de pagamento. As ações exibem mensagens de confirmação para sucesso nas operações.
+    
+    **00:30 – HU02: Gerenciar Receitas**
+    O usuário pode adicionar, visualizar, editar e excluir receitas, atualizando automaticamente o saldo total. Cada receita possui valor, data e fonte, com mensagens confirmando cada ação realizada.
 
 - **Issue/Bug Tracker**  
-  [link](#)
-
-
-
-
-
+  <img width="934" height="314" alt="image" src="https://github.com/user-attachments/assets/650c34ef-294d-449c-91f2-0fdc4669c9a5" />
+  <img width="931" height="235" alt="image" src="https://github.com/user-attachments/assets/821a2467-41da-4af5-acab-25ba44e02e8e" />
 
 
