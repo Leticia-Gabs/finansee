@@ -1,5 +1,11 @@
-package com.controle.model;
+package com.controle.finansee.model;
 
-public class Categoria {
-
+public enum Categoria {
+    ALIMENTACAO,
+    TRANSPORTE,
+    LAZER,
+    MORADIA,
+    SAUDE,
+    EDUCACAO,
+    OUTROS
 }
