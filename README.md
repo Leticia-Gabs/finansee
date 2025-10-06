@@ -52,6 +52,10 @@ Aqui você vai encontrar as histórias de usuário que estão em andamento, o sc
 - **Issue/Bug Tracker**  
   <img width="934" height="314" alt="image" src="https://github.com/user-attachments/assets/650c34ef-294d-449c-91f2-0fdc4669c9a5" />
   <img width="931" height="235" alt="image" src="https://github.com/user-attachments/assets/821a2467-41da-4af5-acab-25ba44e02e8e" />
+  <img width="930" height="174" alt="image" src="https://github.com/user-attachments/assets/d057f4af-6c5b-48f2-adcc-066fa5803ecf" />
+  <img width="929" height="192" alt="image" src="https://github.com/user-attachments/assets/345cbc10-e7b5-43f5-a202-65d44829ff6e" />
+
+
 
 
 
