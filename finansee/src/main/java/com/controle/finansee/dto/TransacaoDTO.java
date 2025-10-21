@@ -11,6 +11,10 @@ public record TransacaoDTO(
         String categoriaNome,
         String categoriaCor,
         String conta,
-        BigDecimal valor
+        BigDecimal valor,
+
+        // --- ADICIONAR ESTES DOIS CAMPOS ---
+        Long categoriaId,
+        String formaPagamento // ex: "PIX", "CARTAO_CREDITO"
 ) {
 }
