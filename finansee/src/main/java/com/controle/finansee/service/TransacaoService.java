@@ -33,7 +33,9 @@ public class TransacaoService {
                         d.getCategoria().getNome(), // Resolve o nome da categoria
                         d.getCategoria().getCor(),  // Resolve a cor
                         d.getConta(),
-                        d.getValor().negate() // <-- Negativa o valor
+                        d.getValor().negate(), // <-- Negativa o valor
+                        d.getCategoria().getId(),
+                        d.getFormaPagamento().name() // Converte o Enum para String
                 ))
                 .toList();
 
@@ -48,7 +50,9 @@ public class TransacaoService {
                         r.getCategoria().getNome(), // Resolve o nome da categoria
                         r.getCategoria().getCor(),  // Resolve a cor
                         r.getConta(),
-                        r.getValor() // O valor já é positivo
+                        r.getValor(), // O valor já é positivo
+                        r.getCategoria().getId(),
+                        r.getFormaPagamento().name() // Converte o Enum para String
                 ))
                 .toList();
 

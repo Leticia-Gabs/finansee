@@ -43,11 +43,6 @@ public class CategoriaPersonalizadaService {
         return toDTO(categoria);
     }
 
-    public void deletarCategoria(Long id) {
-        CategoriaPersonalizada categoria = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada."));
-        repository.delete(categoria);
-    }
 
     // Adicionei o metodo de ATUALIZAR para um CRUD completo
     public CategoriaDTO atualizarCategoria(Long id, CategoriaDTO dto, User usuario) {
