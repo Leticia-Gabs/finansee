@@ -1,12 +1,14 @@
 package com.controle.finansee.service;
 
-import com.controle.finansee.exception.ResourceNotFoundException;
+import com.controle.finansee.dto.CategoriaDTO;
+import com.controle.finansee.model.user.User;
 import com.controle.finansee.model.CategoriaPersonalizada;
 import com.controle.finansee.repository.CategoriaPersonalizadaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoriaPersonalizadaService {
@@ -14,22 +16,64 @@ public class CategoriaPersonalizadaService {
     @Autowired
     private CategoriaPersonalizadaRepository repository;
 
-    public List<CategoriaPersonalizada> listarTodas() {
-        return repository.findAll();
+    // --- MAPPERS ---
+    private CategoriaDTO toDTO(CategoriaPersonalizada categoria) {
+        return new CategoriaDTO(categoria.getId(), categoria.getNome(), categoria.getTipo(), categoria.getCor());
     }
 
-    public CategoriaPersonalizada criarCategoria(String nome) {
-        if (repository.existsByNome(nome)) {
-            throw new IllegalArgumentException("Já existe uma categoria com esse nome.");
+    private CategoriaPersonalizada toEntity(CategoriaDTO dto, User usuario) {
+        return new CategoriaPersonalizada(dto.id(), dto.nome(), dto.tipo(), dto.cor(), usuario);
+    }
+    // ---------------
+
+    public List<CategoriaDTO> listarTodas(User usuario) {
+
+        return repository.findAllByUsuarioId(usuario.getId())
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public CategoriaDTO criarCategoria(CategoriaDTO dto, User usuario) {
+        if (repository.existsByNomeAndUsuarioId(dto.nome(), usuario.getId())) {
+            throw new IllegalArgumentException("Você já possui uma categoria com este nome.");
         }
-        CategoriaPersonalizada categoria = new CategoriaPersonalizada();
-        categoria.setNome(nome);
-        return repository.save(categoria);
+        CategoriaPersonalizada categoria = toEntity(dto, usuario);
+        categoria = repository.save(categoria);
+        return toDTO(categoria);
     }
 
     public void deletarCategoria(Long id) {
         CategoriaPersonalizada categoria = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada."));
+        repository.delete(categoria);
+    }
+
+    // Adicionei o metodo de ATUALIZAR para um CRUD completo
+    public CategoriaDTO atualizarCategoria(Long id, CategoriaDTO dto, User usuario) {
+        CategoriaPersonalizada categoria = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada."));
+
+        // Garante que o usuário só pode editar sua própria categoria
+        if (!categoria.getUsuario().getId().equals(usuario.getId())) {
+            throw new SecurityException("Acesso negado.");
+        }
+
+        categoria.setNome(dto.nome());
+        categoria.setTipo(dto.tipo());
+        categoria.setCor(dto.cor());
+
+        categoria = repository.save(categoria);
+        return toDTO(categoria);
+    }
+
+    public void deletarCategoria(Long id, User usuario) {
+        CategoriaPersonalizada categoria = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada."));
+
+        if (!categoria.getUsuario().getId().equals(usuario.getId())) {
+            throw new SecurityException("Acesso negado.");
+        }
         repository.delete(categoria);
     }
 }

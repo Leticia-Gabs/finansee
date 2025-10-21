@@ -1,5 +1,7 @@
 package com.controle.finansee.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import com.controle.finansee.model.user.User;
 import com.controle.finansee.dto.DespesaDTO;
 import com.controle.finansee.service.DespesaService;
 import jakarta.validation.Valid;
@@ -19,34 +21,39 @@ public class DespesaController {
     private DespesaService despesaService;
 
     @PostMapping
-    public ResponseEntity<DespesaDTO> criarDespesa(@Valid @RequestBody DespesaDTO despesaDTO) {
-        DespesaDTO novaDespesa = despesaService.criar(despesaDTO);
-        // Retorna o status 201 Created com a despesa criada no corpo da resposta
+    public ResponseEntity<DespesaDTO> criarDespesa(
+            @Valid @RequestBody DespesaDTO despesaDTO,
+            @AuthenticationPrincipal User usuario) {
+        DespesaDTO novaDespesa = despesaService.criar(despesaDTO, usuario);
         return new ResponseEntity<>(novaDespesa, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<List<DespesaDTO>> listarTodasDespesas() {
-        List<DespesaDTO> despesas = despesaService.listarTodas();
-        return ResponseEntity.ok(despesas);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<DespesaDTO> buscarDespesaPorId(@PathVariable Long id) {
-        DespesaDTO despesa = despesaService.buscarPorId(id);
-        return ResponseEntity.ok(despesa);
-    }
-
     @PutMapping("/{id}")
-    public ResponseEntity<DespesaDTO> atualizarDespesa(@PathVariable Long id, @Valid @RequestBody DespesaDTO despesaDTO) {
-        DespesaDTO despesaAtualizada = despesaService.atualizar(id, despesaDTO);
+    public ResponseEntity<DespesaDTO> atualizarDespesa(
+            @PathVariable Long id,
+            @Valid @RequestBody DespesaDTO despesaDTO,
+            @AuthenticationPrincipal User usuario) {
+
+        DespesaDTO despesaAtualizada = despesaService.atualizar(id, despesaDTO, usuario);
         return ResponseEntity.ok(despesaAtualizada);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DespesaDTO> buscarDespesaPorId(
+            @PathVariable Long id,
+            @AuthenticationPrincipal User usuario) {
+
+        DespesaDTO despesa = despesaService.buscarPorId(id, usuario);
+        return ResponseEntity.ok(despesa);
+    }
+
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarDespesa(@PathVariable Long id) {
-        despesaService.deletar(id);
-        // Retorna o status 204 No Content, indicando sucesso sem corpo de resposta
+    public ResponseEntity<Void> deletarDespesa(
+            @PathVariable Long id,
+            @AuthenticationPrincipal User usuario) {
+
+        despesaService.deletar(id, usuario);
         return ResponseEntity.noContent().build();
     }
 }

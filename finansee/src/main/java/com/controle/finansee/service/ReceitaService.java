@@ -3,7 +3,13 @@ package com.controle.finansee.service;
 
 import com.controle.finansee.dto.ReceitaDTO;
 import com.controle.finansee.model.Receita;
+
+import com.controle.finansee.model.TipoCategoria;
+import com.controle.finansee.model.CategoriaPersonalizada;
+import com.controle.finansee.model.user.User;
+import com.controle.finansee.repository.CategoriaPersonalizadaRepository;
 import com.controle.finansee.repository.ReceitaRepository;
+
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +23,9 @@ public class ReceitaService {
     @Autowired
     private ReceitaRepository receitaRepository;
 
+    @Autowired
+    private CategoriaPersonalizadaRepository categoriaRepository;
+
     // Metodo para mapear Entidade para DTO
     private ReceitaDTO toDTO(Receita receita) {
         return new ReceitaDTO(
@@ -24,52 +33,76 @@ public class ReceitaService {
                 receita.getDescricao(),
                 receita.getValor(),
                 receita.getData(),
-                receita.getCategoria()
+                receita.getCategoria().getId(),
+                receita.getFormaPagamento(),
+                receita.getConta()
         );
     }
 
     // Metodo para mapear DTO para Entidade
-    private Receita toEntity(ReceitaDTO dto) {
+    private Receita toEntity(ReceitaDTO dto, User usuario) {
+        CategoriaPersonalizada categoria = validaECarregaCategoria(dto.categoriaId(), usuario, TipoCategoria.RECEITA);
         return new Receita(
                 dto.id(),
                 dto.descricao(),
                 dto.valor(),
                 dto.data(),
-                dto.categoria()
+                categoria,
+                usuario,
+                dto.formaPagamento(),
+                dto.conta()
         );
     }
 
-    public List<ReceitaDTO> listarTodas() {
-        return receitaRepository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
+    private CategoriaPersonalizada validaECarregaCategoria(Long categoriaId, User usuario, TipoCategoria tipoEsperado) {
+        CategoriaPersonalizada categoria = categoriaRepository.findById(categoriaId)
+                .orElseThrow(() -> new EntityNotFoundException("Categoria não encontrada com o id: " + categoriaId));
+
+        if (!categoria.getUsuario().getId().equals(usuario.getId())) {
+            throw new SecurityException("Acesso negado: esta categoria não pertence a você.");
+        }
+
+        if (categoria.getTipo() != tipoEsperado) {
+            throw new IllegalArgumentException("Tipo de categoria inválido. Esperado: " + tipoEsperado + ", mas recebido: " + categoria.getTipo());
+        }
+
+        return categoria;
     }
 
-    public ReceitaDTO buscarPorId(Long id) {
+    private Receita validaEDevoveReceita(Long id, User usuario) {
         Receita receita = receitaRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Receita não encontrada com o id: " + id));
-        return toDTO(receita);
+
+        if (!receita.getUsuario().getId().equals(usuario.getId())) {
+            throw new SecurityException("Acesso negado: esta receita não pertence a você.");
+        }
+
+        return receita;
     }
 
-    public ReceitaDTO criar(ReceitaDTO receitaDTO) {
-        Receita receita = toEntity(receitaDTO);
+    public ReceitaDTO criar(ReceitaDTO receitaDTO, User usuario) {
+        Receita receita = toEntity(receitaDTO, usuario);
         receita = receitaRepository.save(receita);
         return toDTO(receita);
     }
 
-    public ReceitaDTO atualizar(Long id, ReceitaDTO receitaDTO) {
-        // Primeiro, verifica se a receita existe
+    public ReceitaDTO atualizar(Long id, ReceitaDTO receitaDTO, User usuario) {
         if (!receitaRepository.existsById(id)) {
             throw new EntityNotFoundException("Receita não encontrada com o id: " + id);
         }
-        Receita receita = toEntity(receitaDTO);
-        receita.setId(id); // Garante que estamos atualizando a entidade correta
+        Receita receita = toEntity(receitaDTO, usuario);
+        receita.setId(id);
         receita = receitaRepository.save(receita);
         return toDTO(receita);
     }
 
-    public void deletar(Long id) {
-        if (!receitaRepository.existsById(id)) {
-            throw new EntityNotFoundException("Receita não encontrada com o id: " + id);
-        }
-        receitaRepository.deleteById(id);
+    public ReceitaDTO buscarPorId(Long id, User usuario) {
+        Receita receita = validaEDevoveReceita(id, usuario);
+        return toDTO(receita);
+    }
+
+    public void deletar(Long id, User usuario) {
+        Receita receita = validaEDevoveReceita(id, usuario);
+        receitaRepository.delete(receita);
     }
 }

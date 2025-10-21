@@ -4,10 +4,13 @@ import com.controle.finansee.model.Despesa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 //Esta interface herda de JpaRepository,
 // e o Spring Data JPA implementará
 // todos os métodos básicos de CRUD para nós.
 
 @Repository
 public interface DespesaRepository extends JpaRepository<Despesa, Long> {
+    List<Despesa> findAllByUsuarioId(Long usuarioId);
 }

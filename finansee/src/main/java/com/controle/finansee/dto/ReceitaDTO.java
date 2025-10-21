@@ -1,6 +1,6 @@
 package com.controle.finansee.dto;
 
-import com.controle.finansee.model.Categoria;
+import com.controle.finansee.model.FormaPagamento;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -22,6 +22,11 @@ public record ReceitaDTO(
         LocalDate data,
 
         @NotNull(message = "Categoria é obrigatória")
-        Categoria categoria
+        Long categoriaId,
+
+        @NotNull(message = "Forma de pagamento é obrigatória")
+        FormaPagamento formaPagamento,
+
+        String conta
 ) {
 }

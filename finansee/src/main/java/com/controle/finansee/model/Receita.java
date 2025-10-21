@@ -1,5 +1,6 @@
 package com.controle.finansee.model;
 
+import com.controle.finansee.model.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +30,18 @@ public class Receita {
     @Column(nullable = false)
     private LocalDate data;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private CategoriaPersonalizada categoria;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private User usuario;
+
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Categoria categoria;
+    @Column(name = "forma_pagamento", nullable = false)
+    private FormaPagamento formaPagamento;
+
+    @Column(name = "conta")
+    private String conta;
 }
