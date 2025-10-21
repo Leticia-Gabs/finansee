@@ -3,6 +3,8 @@ package com.controle.finansee.repository;
 import com.controle.finansee.model.Despesa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+
 
 import java.util.List;
 
@@ -14,3 +16,4 @@ import java.util.List;
 public interface DespesaRepository extends JpaRepository<Despesa, Long> {
     List<Despesa> findAllByUsuarioId(Long usuarioId);
 }
+
