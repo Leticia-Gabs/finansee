@@ -28,6 +28,12 @@ public class CategoriaPersonalizadaController {
 
     @PostMapping
     public ResponseEntity<CategoriaDTO> criar(@RequestBody @Valid CategoriaDTO dto, @AuthenticationPrincipal User usuario) {
+        System.out.println("----- Controller: Tentando criar categoria -----");
+        if (usuario == null) {
+            System.out.println("ERRO GRAVE: @AuthenticationPrincipal Usuario é NULL!");
+        } else {
+            System.out.println("Usuário autenticado ID: " + usuario.getId());
+        }
         CategoriaDTO novaCategoria = service.criarCategoria(dto, usuario);
         return new ResponseEntity<>(novaCategoria, HttpStatus.CREATED);
     }

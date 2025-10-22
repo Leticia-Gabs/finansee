@@ -35,6 +35,14 @@ public class CategoriaPersonalizadaService {
     }
 
     public CategoriaDTO criarCategoria(CategoriaDTO dto, User usuario) {
+        System.out.println("----- Service toEntity -----");
+        if (usuario == null) {
+            System.out.println("ERRO GRAVE: Usuário recebido no toEntity é NULL!");
+            // Você pode até lançar uma exceção aqui para parar antes do save
+            // throw new IllegalArgumentException("Usuário não pode ser nulo ao criar categoria");
+        } else {
+            System.out.println("Mapeando para entidade com Usuário ID: " + usuario.getId());
+        }
         if (repository.existsByNomeAndUsuarioId(dto.nome(), usuario.getId())) {
             throw new IllegalArgumentException("Você já possui uma categoria com este nome.");
         }

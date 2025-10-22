@@ -58,8 +58,10 @@ public class DespesaController {
     }
 
     // NOVO: Endpoint para filtrar despesas com paginação, ordenação e filtros opcionais
-    @GetMapping("/filtro")
-    public ResponseEntity<Page<DespesaDTO>> filtrarDespesas(
+    //
+    /*
+    *@GetMapping("/filtro")
+    *public ResponseEntity<Page<DespesaDTO>> filtrarDespesas(
         @RequestParam(required = false) String categoria,
         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio,
         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFim,
@@ -72,7 +74,8 @@ public class DespesaController {
                 categoria, dataInicio, dataFim, valorMin, valorMax, usuario, pageable);
 
     return ResponseEntity.ok(despesasFiltradas);
-}
+    }
+*/
 
 
 }
