@@ -37,13 +37,15 @@ public class TransacaoController {
             LocalDate dataFim,
 
             @RequestParam(required = false) BigDecimal valorMin,
-            @RequestParam(required = false) BigDecimal valorMax
+            @RequestParam(required = false) BigDecimal valorMax,
+
+            @RequestParam(required = false) String tipo
             // ------------------------------------
     ) {
 
         // Passa os filtros para o service
         List<TransacaoDTO> transacoes = transacaoService.listarTransacoes(
-                usuario, categoriaId, dataInicio, dataFim, valorMin, valorMax
+                usuario, tipo, categoriaId, dataInicio, dataFim, valorMin, valorMax
         );
         return ResponseEntity.ok(transacoes);
     }

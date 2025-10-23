@@ -31,13 +31,15 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected  void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String requestPath = request.getServletPath();
+        System.out.println("SecurityFilter - Path recebido: " + requestPath); // Log para Debug
 
-        String requestPath = request.getRequestURI();
         if (PUBLIC_PATHS.contains(requestPath)) {
+            System.out.println("SecurityFilter - Path público detectado, pulando validação de token."); // Log para Debug
             filterChain.doFilter(request, response); // Continue to the next filter or controller
             return; // <<< Important: Stop processing THIS filter
         }
-
+        System.out.println("SecurityFilter - Path protegido, processando token..."); // Log para Debug
         var token = this.recoverToken(request);
 
         if (token != null) { // Only proceed if a token was actually found
@@ -56,12 +58,16 @@ public class SecurityFilter extends OncePerRequestFilter {
                 var authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+                System.out.println("SecurityFilter - Usuário autenticado: " + login); // Log para Debug
             } else {
                 // Optional: Token was present but invalid/expired. Clear context.
+
+                System.out.println("SecurityFilter - Token inválido ou expirado."); // Log para Debug
                 SecurityContextHolder.clearContext();
             }
         } else {
             // Optional: No token was present for a protected route. Clear context.
+            System.out.println("SecurityFilter - Nenhum token encontrado para path protegido."); // Log para Debug
             SecurityContextHolder.clearContext();
         }
 
