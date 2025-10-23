@@ -7,6 +7,8 @@ import com.controle.finansee.repository.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -20,10 +22,15 @@ public class TransacaoService {
     @Autowired
     private ReceitaRepository receitaRepository;
 
-    public List<TransacaoDTO> listarTransacoes(User usuario) {
+    public List<TransacaoDTO> listarTransacoes(User usuario,
+                                               Long categoriaId,
+                                               LocalDate dataInicio,
+                                               LocalDate dataFim,
+                                               BigDecimal valorMin,
+                                               BigDecimal valorMax) {
 
         // 1. Buscar todas as despesas do usuário
-        List<TransacaoDTO> despesas = despesaRepository.findAllByUsuarioId(usuario.getId())
+        List<TransacaoDTO> despesas = despesaRepository.findByFilters( usuario.getId(), categoriaId, dataInicio, dataFim, valorMin, valorMax)
                 .stream()
                 .map(d -> new TransacaoDTO(
                         d.getId(),
@@ -40,7 +47,7 @@ public class TransacaoService {
                 .toList();
 
         // 2. Buscar todas as receitas do usuário
-        List<TransacaoDTO> receitas = receitaRepository.findAllByUsuarioId(usuario.getId())
+        List<TransacaoDTO> receitas = receitaRepository.findByFilters( usuario.getId(), categoriaId, dataInicio, dataFim, valorMin, valorMax)
                 .stream()
                 .map(r -> new TransacaoDTO(
                         r.getId(),
@@ -58,7 +65,8 @@ public class TransacaoService {
 
         // 3. Juntar as duas listas, ordenar por data (mais recente primeiro) e retornar
         return Stream.concat(despesas.stream(), receitas.stream())
-                .sorted(Comparator.comparing(TransacaoDTO::data).reversed())
+                .sorted(Comparator.comparing(TransacaoDTO::data).reversed() // Mais recentes primeiro
+                        .thenComparing(TransacaoDTO::id).reversed()) // Desempate pelo ID
                 .toList();
     }
 }
