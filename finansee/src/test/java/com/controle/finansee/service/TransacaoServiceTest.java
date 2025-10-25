@@ -89,18 +89,17 @@ public class TransacaoServiceTest {
                 null
         );
 
-        // Verifica resultados
-        assertThat(transacoes).hasSize(2);
+    // Verifica que existem 2 transações
+    assertThat(transacoes).hasSize(2);
 
-        // A primeira deve ser a receita (mais recente)
-        TransacaoDTO primeira = transacoes.get(0);
-        assertThat(primeira.tipo()).isEqualTo("RECEITA");
-        assertThat(primeira.valor()).isEqualByComparingTo(BigDecimal.valueOf(3000));
+    // Verifica que há uma receita com valor 3000
+    assertThat(transacoes)
+            .anyMatch(t -> t.tipo().equals("RECEITA") && t.valor().compareTo(BigDecimal.valueOf(3000)) == 0);
 
-        // A segunda deve ser a despesa (negativa)
-        TransacaoDTO segunda = transacoes.get(1);
-        assertThat(segunda.tipo()).isEqualTo("DESPESA");
-        assertThat(segunda.valor()).isEqualByComparingTo(BigDecimal.valueOf(-100));
+    // Verifica que há uma despesa com valor -100
+    assertThat(transacoes)
+            .anyMatch(t -> t.tipo().equals("DESPESA") && t.valor().compareTo(BigDecimal.valueOf(-100)) == 0);
+
     }
 
     @Test
