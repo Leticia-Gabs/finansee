@@ -1,6 +1,6 @@
 # FinanSee
 
-**FinanSee** é mais do que um simples gerenciador de finanças: é o seu parceiro inteligente para organizar a vida financeira! Com ele, você controla entradas e saídas de despesas e receitas, acompanha tudo em um dashboard interativo e envolvente, personaliza categorias, define limites de orçamento e ainda gera relatórios detalhados com exportação de dados em .csv, .xlsx e .pdf.
+**FinanSee** é o seu parceiro inteligente para organizar a vida financeira! Com ele, você controla entradas e saídas de despesas e receitas, acompanha tudo em um dashboard interativo e envolvente, personaliza categorias, define limites de orçamento e ainda gera relatórios detalhados com exportação de dados em .csv, .xlsx e .pdf.
 
 ---
 
@@ -54,6 +54,7 @@ Aqui você vai encontrar as histórias de usuário que estão em andamento, o sc
   <img width="931" height="235" alt="image" src="https://github.com/user-attachments/assets/821a2467-41da-4af5-acab-25ba44e02e8e" />
   <img width="930" height="174" alt="image" src="https://github.com/user-attachments/assets/d057f4af-6c5b-48f2-adcc-066fa5803ecf" />
   <img width="929" height="192" alt="image" src="https://github.com/user-attachments/assets/345cbc10-e7b5-43f5-a202-65d44829ff6e" />
+
 
 
 
