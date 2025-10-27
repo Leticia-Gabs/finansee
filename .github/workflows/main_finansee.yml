@@ -25,6 +25,7 @@ jobs:
           distribution: 'microsoft'
 
       - name: Build with Maven
+        working-directory: ./finansee
         run: mvn clean install
 
       - name: Upload artifact for deployment job
@@ -60,4 +61,5 @@ jobs:
           app-name: 'finansee'
           slot-name: 'Production'
           package: '*.jar'
+
           
