@@ -60,6 +60,7 @@ jobs:
         with:
           app-name: 'finansee'
           slot-name: 'Production'
-          package: '*.jar'
+          package: '${{ github.workspace }}/finansee/target/*.jar'
 
           
+
