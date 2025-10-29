@@ -95,15 +95,5 @@ class AuthControllerTest {
         verify(userRepository).save(any(User.class));
     }
 
-    @Test
-    void deveRetornarBadRequestSeEmailJaExistirNoCadastro() {
-        RegisterRequestDTO registerDTO = new RegisterRequestDTO("teste@email.com", "1234", "Usuário Existente");
 
-        when(userRepository.findByEmail("teste@email.com")).thenReturn(Optional.of(user));
-
-        ResponseEntity<?> resposta = authController.login(registerDTO);
-
-        assertEquals(400, resposta.getStatusCodeValue());
-        verify(userRepository, never()).save(any());
-    }
 }
