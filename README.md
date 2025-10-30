@@ -71,9 +71,9 @@ Aqui você vai encontrar as histórias de usuário selecionadas para esta entreg
  - **Screencast do Sistema Back-End**
   https://youtu.be/5H19bfXRujQ
 
-  **00:15 – HU03: Categorias Personalizáveis** Permite criar, editar e excluir categorias de despesas personalizadas. O sistema garante o controle ao impedir nomes duplicados e exibindo    mensagens de erro. 
+   **00:15 – HU03: Categorias Personalizáveis** Permite criar, editar e excluir categorias de despesas personalizadas. O sistema garante o controle ao impedir nomes duplicados e exibindo    mensagens de erro. 
  
-  **01:10 – HU05: Busca e Filtros** Permite buscar e filtrar despesas por categoria, data ou valor. O sistema suporta a combinação de filtros, como despesas da categoria “Alimentação”      dos   últimos 30 dias, para exibição de resultados precisos.
+   **01:10 – HU05: Busca e Filtros** Permite buscar e filtrar despesas por categoria, data ou valor. O sistema suporta a combinação de filtros, como despesas da categoria “Alimentação”      dos   últimos 30 dias, para exibição de resultados precisos.
   
 - **Testes Automatizados**  
   Implementação de testes automatizados (unitários e/ou de integração).
