@@ -55,8 +55,35 @@ Aqui você vai encontrar as histórias de usuário que estão em andamento, o sc
   <img width="930" height="174" alt="image" src="https://github.com/user-attachments/assets/d057f4af-6c5b-48f2-adcc-066fa5803ecf" />
   <img width="929" height="192" alt="image" src="https://github.com/user-attachments/assets/345cbc10-e7b5-43f5-a202-65d44829ff6e" />
 
+### Sessão Entrega 03
 
+Aqui você vai encontrar as histórias de usuário selecionadas para esta entrega, o screencast do sistema atualizado, o issue/bug tracker, o ambiente de versionamento e os testes automatizados.
 
+- **Histórias de Usuário Selecionadas [Quadro Trello]**
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/cc8984ce-4af6-4f0e-932c-5f298b767e46" width="48%" alt="Resultado HU03">
+  <img src="https://github.com/user-attachments/assets/ae0dce7d-f496-42ae-a807-44b9c9dad293" width="48%" alt="Resultado HU05">
+</p>
+
+- **Screencast do Sistema (Atualizado)**  
+  https://youtu.be/Wdt5StLO-GE
+
+   **00:15 – HU03: Categorias Personalizáveis** Permite criar, editar e excluir categorias de despesas personalizadas. O sistema garante o controle ao impedir nomes duplicados e exibindo    mensagens de erro. 
+ 
+  **01:10 – HU05: Busca e Filtros** Permite buscar e filtrar despesas por categoria, data ou valor. O sistema suporta a combinação de filtros, como despesas da categoria “Alimentação”      dos   últimos 30 dias, para exibição de resultados precisos.
+  
+- **Testes Automatizados**  
+  Implementação de testes automatizados (unitários e/ou de integração).
+
+  - Comando para rodar os testes: `npm test` / `pytest` / `mvn test` (ajustar conforme stack).  
+  - Critério de aceite: todos os testes das histórias selecionadas devem passar no CI.
+
+- **Screencast dos Testes**
+  https://youtu.be/DhLjTXhi8lQ
+
+  - **Issue/Bug Tracker**
+  <img width="921" height="178" alt="image" src="https://github.com/user-attachments/assets/e193a215-a50e-43c2-a202-47905c8c8b31" />
+  <img width="933" height="190" alt="image" src="https://github.com/user-attachments/assets/b830b890-dd0b-4fef-ac53-4c92a70ca9e6" />
 
 
 
