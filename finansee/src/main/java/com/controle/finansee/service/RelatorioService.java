@@ -14,7 +14,6 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.UnitValue;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
@@ -24,10 +23,17 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
 
+import com.controle.finansee.dto.ResumoMesDTO;
+import com.controle.finansee.repository.ReceitaRepository;
+import java.math.BigDecimal;
+
 @Service
 public class RelatorioService {
     @Autowired
     private DespesaRepository despesaRepository;
+
+    @Autowired
+    private ReceitaRepository receitaRepository;
 
     @Autowired
     private TransacaoService transacaoService;
@@ -95,5 +101,28 @@ public class RelatorioService {
         document.close();
 
         return new ByteArrayInputStream(out.toByteArray());
+    }
+
+    public ResumoMesDTO getResumoDoMes(User usuario, int ano, int mes) {
+
+        // 1. Busca os gastos por categoria (para o gráfico)
+        List<GastoPorCategoriaDTO> gastos = this.getGastosPorCategoria(usuario, ano, mes);
+
+        // 2. Calcula o total de despesas somando os gastos do gráfico
+        BigDecimal totalDespesas = gastos.stream()
+                .map(GastoPorCategoriaDTO::totalGasto)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        // 3. Busca o total de receitas
+        BigDecimal totalReceitas = receitaRepository.sumByUsuarioAndMes(usuario.getId(), ano, mes);
+        if (totalReceitas == null) {
+            totalReceitas = BigDecimal.ZERO; // Garante que não seja nulo se não houver receitas
+        }
+
+        // 4. Calcula o saldo
+        BigDecimal saldoDoMes = totalReceitas.subtract(totalDespesas);
+
+        // 5. Retorna o DTO completo
+        return new ResumoMesDTO(totalReceitas, totalDespesas, saldoDoMes, gastos);
     }
 }

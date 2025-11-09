@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
+import com.controle.finansee.dto.ResumoMesDTO;
 
 @RestController
 @RequestMapping("/api/relatorios")
@@ -25,15 +26,26 @@ public class RelatorioController {
     @Autowired
     private RelatorioService relatorioService;
 
-    @GetMapping("/gastos-por-categoria")
-    public ResponseEntity<List<GastoPorCategoriaDTO>> getGastosPorCategoria(
+    @GetMapping("/resumo-mes")
+    public ResponseEntity<ResumoMesDTO> getResumoMes(
             @AuthenticationPrincipal User usuario,
             @RequestParam int ano,
             @RequestParam int mes
     ) {
-        List<GastoPorCategoriaDTO> relatorio = relatorioService.getGastosPorCategoria(usuario, ano, mes);
-        return ResponseEntity.ok(relatorio);
+        ResumoMesDTO resumo = relatorioService.getResumoDoMes(usuario, ano, mes);
+        return ResponseEntity.ok(resumo);
     }
+
+// comentado pois foi criado um service mais completo, unindo receita, despesa e total.
+//    @GetMapping("/gastos-por-categoria")
+//    public ResponseEntity<List<GastoPorCategoriaDTO>> getGastosPorCategoria(
+//            @AuthenticationPrincipal User usuario,
+//            @RequestParam int ano,
+//            @RequestParam int mes
+//    ) {
+//        List<GastoPorCategoriaDTO> relatorio = relatorioService.getGastosPorCategoria(usuario, ano, mes);
+//        return ResponseEntity.ok(relatorio);
+//    }
 
     @GetMapping("/exportar-pdf")
     public ResponseEntity<Resource> exportarTransacoes(
@@ -49,7 +61,7 @@ public class RelatorioController {
 
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
-                    .contentType(MediaType.APPLICATION_PDF) // Define o tipo de conteúdo como PDF
+                    .contentType(MediaType.APPLICATION_PDF)
                     .body(resource);
 
         } catch (IOException e) {
