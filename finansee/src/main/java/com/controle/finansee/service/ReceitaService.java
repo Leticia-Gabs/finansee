@@ -83,6 +83,7 @@ public class ReceitaService {
     public ReceitaDTO criar(ReceitaDTO receitaDTO, User usuario) {
         Receita receita = toEntity(receitaDTO, usuario);
         receita = receitaRepository.save(receita);
+        System.out.println("Receita criada com sucesso. ");
         return toDTO(receita);
     }
 
@@ -93,6 +94,7 @@ public class ReceitaService {
         Receita receita = toEntity(receitaDTO, usuario);
         receita.setId(id);
         receita = receitaRepository.save(receita);
+        System.out.println("Receita atualizada com sucesso. ");
         return toDTO(receita);
     }
 
@@ -103,6 +105,7 @@ public class ReceitaService {
 
     public void deletar(Long id, User usuario) {
         Receita receita = validaEDevoveReceita(id, usuario);
+        System.out.println("Receita deletada com sucesso. ");
         receitaRepository.delete(receita);
     }
 }

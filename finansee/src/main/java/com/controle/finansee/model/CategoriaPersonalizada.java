@@ -23,12 +23,10 @@ public class CategoriaPersonalizada {
     @Column(nullable = false)
     private String nome;
 
-    // novo campo
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoCategoria tipo;
 
-    //novo campo
     @Column(nullable = false)
     private String cor;
 

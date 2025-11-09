@@ -14,9 +14,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 
 @Service
 public class DespesaService {
@@ -96,7 +93,7 @@ public class DespesaService {
             throw new EntityNotFoundException("Despesa não encontrada com o id: " + id);
         }
         Despesa despesa = toEntity(despesaDTO, usuario);
-        despesa.setId(id); // Garante que estamos atualizando a entidade correta
+        despesa.setId(id);
         despesa = despesaRepository.save(despesa);
         return toDTO(despesa);
     }
@@ -111,51 +108,4 @@ public class DespesaService {
        despesaRepository.delete(despesa);
     }
 
-
-//    Abaixo: os métodos de filtrar (HU05)
-
-    /*
-//    public List<DespesaDTO> filtrar(String categoria, LocalDate dataInicio, LocalDate dataFim,
-//                                    BigDecimal valorMin, BigDecimal valorMax, User usuario) {
-//        // Chama o repositório para buscar as despesas filtradas pelos parâmetros informados
-//        // O repositório deve implementar a lógica para aplicar esses filtros no banco
-//        List<Despesa> despesas = despesaRepository.filtrarDespesas(categoria, dataInicio, dataFim, valorMin, valorMax, usuario);
-//
-//        // Converte a lista de entidades 'Despesa' para uma lista de DTOs 'DespesaDTO'
-//        // Isso é útil para não expor diretamente a entidade e facilitar o envio dos dados ao frontend
-//        return despesas.stream().map(DespesaDTO::new).toList();
-//        // Mapeia cada Despesa para um DespesaDTO (presumindo que exista esse construtor) // Coleta o resultado em uma lista
-//    }
-//
-//    public Page<DespesaDTO> filtrarComPaginacao(String categoria, LocalDate dataInicio, LocalDate dataFim,
-//                                           BigDecimal valorMin, BigDecimal valorMax, User usuario, Pageable pageable) {
-//    // lógica para buscar com filtros e paginação
-//    }
-
-//    public Page<DespesaDTO> filtrarComPaginacao(String categoria, LocalDate dataInicio, LocalDate dataFim,
-//                                            BigDecimal valorMin, BigDecimal valorMax, User usuario, Pageable pageable) {
-//
-//        Specification<Despesa> spec = Specification.where(DespesaSpecifications.pertenceAoUsuario(usuario.getId()));
-//
-//        if (categoria != null && !categoria.isEmpty()) {
-//            spec = spec.and(DespesaSpecifications.comCategoria(categoria));
-//        }
-//        if (dataInicio != null) {
-//            spec = spec.and(DespesaSpecifications.dataMaiorOuIgual(dataInicio));
-//        }
-//        if (dataFim != null) {
-//            spec = spec.and(DespesaSpecifications.dataMenorOuIgual(dataFim));
-//        }
-//        if (valorMin != null) {
-//            spec = spec.and(DespesaSpecifications.valorMaiorOuIgual(valorMin));
-//        }
-//        if (valorMax != null) {
-//            spec = spec.and(DespesaSpecifications.valorMenorOuIgual(valorMax));
-//        }
-//
-//        Page<Despesa> despesasPage = despesaRepository.findAll(spec, pageable);
-//
-//        return despesasPage.map(DespesaDTO::new);
-//    }
-    */
 }

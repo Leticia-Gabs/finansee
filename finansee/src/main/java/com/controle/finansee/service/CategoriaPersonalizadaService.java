@@ -1,5 +1,4 @@
 package com.controle.finansee.service;
-
 import com.controle.finansee.dto.CategoriaDTO;
 import com.controle.finansee.model.user.User;
 import com.controle.finansee.model.CategoriaPersonalizada;
@@ -16,7 +15,6 @@ public class CategoriaPersonalizadaService {
     @Autowired
     private CategoriaPersonalizadaRepository repository;
 
-    // --- MAPPERS ---
     private CategoriaDTO toDTO(CategoriaPersonalizada categoria) {
         return new CategoriaDTO(categoria.getId(), categoria.getNome(), categoria.getTipo(), categoria.getCor());
     }
@@ -24,7 +22,6 @@ public class CategoriaPersonalizadaService {
     private CategoriaPersonalizada toEntity(CategoriaDTO dto, User usuario) {
         return new CategoriaPersonalizada(dto.id(), dto.nome(), dto.tipo(), dto.cor(), usuario);
     }
-    // ---------------
 
     public List<CategoriaDTO> listarTodas(User usuario) {
 
@@ -37,9 +34,7 @@ public class CategoriaPersonalizadaService {
     public CategoriaDTO criarCategoria(CategoriaDTO dto, User usuario) {
         System.out.println("----- Service toEntity -----");
         if (usuario == null) {
-            System.out.println("ERRO GRAVE: Usuário recebido no toEntity é NULL!");
-            // Você pode até lançar uma exceção aqui para parar antes do save
-            // throw new IllegalArgumentException("Usuário não pode ser nulo ao criar categoria");
+            throw new IllegalArgumentException("Usuário não pode ser nulo ao criar categoria");
         } else {
             System.out.println("Mapeando para entidade com Usuário ID: " + usuario.getId());
         }

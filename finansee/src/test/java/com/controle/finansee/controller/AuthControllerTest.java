@@ -85,7 +85,7 @@ class AuthControllerTest {
         when(passwordEncoder.encode("1234")).thenReturn("senhaCriptografada");
         when(tokenService.generateToken(any(User.class))).thenReturn("tokenFake123");
 
-        ResponseEntity<?> resposta = authController.login(registerDTO);
+        ResponseEntity<?> resposta = authController.register(registerDTO);
 
         assertEquals(200, resposta.getStatusCodeValue());
         ResponseDTO corpo = (ResponseDTO) resposta.getBody();

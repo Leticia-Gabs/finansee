@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// representa uma entidade:
 @Entity
-// representa uma tabela no BD, logo:
 @Table(name = "users")
 
 @Getter

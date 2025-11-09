@@ -91,6 +91,7 @@ public class TransacaoService {
                     .toList();
         }
         // 3. Juntar as duas listas, ordenar por data (mais recente primeiro) e retornar
+        System.out.println("Listando transações!");
         return Stream.concat(despesasDTO.stream(), receitasDTO.stream())
                 .sorted(Comparator.comparing(TransacaoDTO::data).reversed()
                         .thenComparing(TransacaoDTO::id).reversed())

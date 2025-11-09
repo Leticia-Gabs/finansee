@@ -1,21 +1,20 @@
 package com.controle.finansee.controller;
-
 import com.controle.finansee.dto.TransacaoDTO;
-import com.controle.finansee.model.user.User; // Importe sua entidade User
+import com.controle.finansee.model.user.User;
 import com.controle.finansee.service.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat; // Import necessário
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal; // Import necessário
-import java.time.LocalDate; // Import necessário
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/transacoes")
-@CrossOrigin(origins = "*") // Lembre-se de restringir em produção
+@CrossOrigin(origins = "*")
 public class TransacaoController {
 
     @Autowired
@@ -23,9 +22,8 @@ public class TransacaoController {
 
     @GetMapping
     public ResponseEntity<List<TransacaoDTO>> listarTransacoes(
-            @AuthenticationPrincipal User usuario, // Usuário logado
+            @AuthenticationPrincipal User usuario,
 
-            // --- NOVOS PARÂMETROS DE FILTRO ---
             @RequestParam(required = false) Long categoriaId,
 
             @RequestParam(required = false)
@@ -47,6 +45,7 @@ public class TransacaoController {
         List<TransacaoDTO> transacoes = transacaoService.listarTransacoes(
                 usuario, tipo, categoriaId, dataInicio, dataFim, valorMin, valorMax
         );
+        System.out.println("Listando transações!");
         return ResponseEntity.ok(transacoes);
     }
 }

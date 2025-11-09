@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/receitas")
-@CrossOrigin(origins = "*") // Permite que o frontend (de qualquer origem) acesse a API]
+@CrossOrigin(origins = "*")
 
 public class ReceitaController {
 

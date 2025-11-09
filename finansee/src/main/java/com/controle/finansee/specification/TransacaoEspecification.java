@@ -16,7 +16,7 @@ public class TransacaoEspecification {
 
     // Specification genérica que pode ser usada para Despesa ou Receita
     // T representa a entidade (Despesa ou Receita)
-    public static <T> Specification<T> RASCUNHO( // 'RASCUNHO' é um nome temporário aqui, refaça como quiser
+    public static <T> Specification<T> RASCUNHO(
                                                  User usuario,
                                                  Long categoriaId,
                                                  LocalDate dataInicio,
@@ -30,7 +30,7 @@ public class TransacaoEspecification {
             List<Predicate> predicates = new ArrayList<>();
 
             // 1. Filtro OBRIGATÓRIO por usuário
-            Join<T, User> userJoin = root.join("usuario"); // Assume que a entidade T tem um campo 'usuario'
+            Join<T, User> userJoin = root.join("usuario");
             predicates.add(cb.equal(userJoin.get("id"), usuario.getId()));
 
             // 2. Filtro OPCIONAL por categoriaId
