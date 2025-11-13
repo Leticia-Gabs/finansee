@@ -1,6 +1,10 @@
-# FinanSee
+# Finansee 
 
-**FinanSee** é o seu parceiro inteligente para organizar a vida financeira! Com ele, você controla entradas e saídas de despesas e receitas, acompanha tudo em um dashboard interativo e envolvente, personaliza categorias, define limites de orçamento e ainda gera relatórios detalhados com exportação de dados em .csv, .xlsx e .pdf.
+FinanSee é o seu parceiro financeiro inteligente. Aperfeiçoe a organização da sua vida controlando receitas e despesas. Acompanhe o progresso em um dashboard interativo, personalize categorias, defina limites de orçamento e gere relatórios detalhados.
+
+<p align="center">
+  <img width="250" height="250" alt="Design sem nome" src="https://github.com/user-attachments/assets/32e3c879-6039-485a-9806-c01eb1835c03" />
+</p>
 
 ---
 
@@ -14,6 +18,18 @@
 - **Exportação de Dados**: em **.csv**, **.xlsx** e **.pdf**.  
 
 ---
+
+### Executando o Projeto Front-end
+
+Instruções claras e sequenciais para rodar o projeto localmente:
+
+| Ordem | Comando / Ação | Descrição |
+| :---: | :--- | :--- |
+| **1.** | `git clone https://github.com/dayvidcristiano/finansee-web.git` | **Clonar** o repositório do projeto. |
+| **2.** | `cd finansee-web` | **Acessar** o diretório raiz do projeto recém-clonado. |
+| **3.** | `npm i` | **Instalar** todas as dependências do projeto. |
+| **4.** | `npm start` | **Iniciar** o servidor de desenvolvimento. |
+| **5.** | **Acesso** | O projeto estará disponível em: **`http://localhost:3000/`** |
 
 ### Sessão Entrega 1
 
@@ -54,6 +70,8 @@ Aqui você vai encontrar as histórias de usuário que estão em andamento, o sc
   <img width="931" height="235" alt="image" src="https://github.com/user-attachments/assets/821a2467-41da-4af5-acab-25ba44e02e8e" />
   <img width="930" height="174" alt="image" src="https://github.com/user-attachments/assets/d057f4af-6c5b-48f2-adcc-066fa5803ecf" />
   <img width="929" height="192" alt="image" src="https://github.com/user-attachments/assets/345cbc10-e7b5-43f5-a202-65d44829ff6e" />
+--- 
+
 
 ### Sessão Entrega 03
 
@@ -65,28 +83,80 @@ Aqui você vai encontrar as histórias de usuário selecionadas para esta entreg
   <img src="https://github.com/user-attachments/assets/ae0dce7d-f496-42ae-a807-44b9c9dad293" width="48%" alt="Resultado HU05">
 </p>
 
- - **Screencast do Sistema Front-End**  
+- **Screencast do Sistema Front-End** <br>
   https://youtu.be/Wdt5StLO-GE
 
- - **Screencast do Sistema Back-End**
+- **Screencast do Sistema Back-End** <br>
   https://youtu.be/5H19bfXRujQ
 
-   **00:15 – HU03: Categorias Personalizáveis** Permite criar, editar e excluir categorias de despesas personalizadas. O sistema garante o controle ao impedir nomes duplicados e exibindo    mensagens de erro. 
+   **00:15 – HU03: Categorias Personalizáveis** <br>
+  Permite criar, editar e excluir categorias de despesas personalizadas. O sistema garante o controle ao impedir nomes duplicados e exibindo    mensagens de erro. 
  
-   **01:10 – HU05: Busca e Filtros** Permite buscar e filtrar despesas por categoria, data ou valor. O sistema suporta a combinação de filtros, como despesas da categoria “Alimentação”      dos   últimos 30 dias, para exibição de resultados precisos.
+  **01:10 – HU05: Busca e Filtros** <br>
+  Permite buscar e filtrar despesas por categoria, data ou valor. O sistema suporta a combinação de filtros, como despesas da categoria “Alimentação”      dos   últimos 30 dias, para      exibição de resultados precisos.
   
 - **Testes Automatizados**  
-  Implementação de testes automatizados (unitários e/ou de integração).
+Implementação de testes automatizados (unitários e/ou de integração).
 
   - Comando para rodar os testes: `npm test` / `pytest` / `mvn test` (ajustar conforme stack).  
   - Critério de aceite: todos os testes das histórias selecionadas devem passar no CI.
 
 - **Screencast dos Testes**
-  https://youtu.be/DhLjTXhi8lQ
+https://youtu.be/DhLjTXhi8lQ
 
   - **Issue/Bug Tracker**
   <img width="921" height="178" alt="image" src="https://github.com/user-attachments/assets/e193a215-a50e-43c2-a202-47905c8c8b31" />
   <img width="933" height="190" alt="image" src="https://github.com/user-attachments/assets/b830b890-dd0b-4fef-ac53-4c92a70ca9e6" />
+--- 
+
+
+### Sessão Entrega 04
+
+Aqui você encontrará a documentação da **última entrega** do projeto, incluindo a seleção de novas histórias implementadas, a refatoração para **persistência de dados permanente**, o screencast atualizado do sistema e dos testes automatizados, e a continuidade do ambiente de versionamento e do *issue/bug tracker*.
+
+- **Histórias de Usuário Selecionadas [Quadro Trello]**
+<p align="left">
+  <img width="445" height="97" alt="image" src="https://github.com/user-attachments/assets/02ca4345-413a-4734-a5ff-1f8d564f2434" />
+  <img width="449" height="93" alt="image" src="https://github.com/user-attachments/assets/9370f129-c177-41b6-b3d5-041195bde631" />
+  <img width="445" height="97" alt="image" src="https://github.com/user-attachments/assets/718170cb-d9cf-47c0-8ec5-750c56734520" />
+</p>
+
+  - **Screencast do Sistema (Front-End com novas HUs)** <br>
+  [Link para o YouTube (Screencast Front-End v4)]
+
+    **HU04: Controle de Orçamento** <br>
+    Permite que o usuário defina um limite de orçamento mensal para categorias de despesas. O sistema notifica o usuário quando o gasto acumulado se aproxima (ex: 80%) ou excede esse        limite, garantindo a gestão proativa dos gastos.
+  
+    **HU06: Exportação de Dados** <br>
+    Permite que o usuário exporte dados de despesas e receitas, selecionando um período e um formato de arquivo (CSV, XLSX ou PDF). O arquivo gerado deve conter todos os detalhes das        transações do período selecionado.
+  
+    **HU07: Relatórios e Gráficos** 
+    Fornece ao usuário uma visão geral dos gastos mensais por categoria através de relatórios e gráficos de barras. O sistema exibe o total gasto no mês e a      representatividade          percentual de cada categoria.
+
+  - **Screencast do Sistema (Back-End com persistência)** <br>
+  [Link para o YouTube (Screencast Back-End v4)]
+
+  - **Persistência de Dados (Refatoração)** <br>
+  O projeto foi refatorado para utilizar **persistência permanente** de dados através de [Mencione o método: Banco de Dados, Arquivo, Serialização, etc.].
+
+  - **Testes Automatizados** <br>
+  Implementação de testes automatizados (unitários e/ou de integração).
+
+  - Comando para rodar os testes: `npm test` / `pytest` / `mvn test` (ajustar conforme stack).  <br>
+  - Critério de aceite: todos os testes das histórias selecionadas devem passar no CI.
+
+  - **Screencast dos Testes** <br>
+  [Link para o YouTube (Screencast da Execução dos Testes)]
+
+  - **Uso do Issue/Bug Tracker (no GitHub)** <br>
+  O gerenciamento de *issues* e *bugs* foi realizado integralmente no GitHub.
+
+  <img width="928" height="178" alt="image" src="https://github.com/user-attachments/assets/13f7b75b-b317-4d4d-9861-8056271ed723" />
+  <img width="939" height="191" alt="image" src="https://github.com/user-attachments/assets/02115aa1-4b74-4cf7-a1df-fc7c5f9e522b" />
+  <img width="951" height="322" alt="image" src="https://github.com/user-attachments/assets/f30132d5-6e32-4ae3-91ba-7c787d1dd427" />
+  <img width="938" height="185" alt="image" src="https://github.com/user-attachments/assets/6bb09f0a-b103-4568-942e-45790c3004c6" />
+
+---
 
 
 
