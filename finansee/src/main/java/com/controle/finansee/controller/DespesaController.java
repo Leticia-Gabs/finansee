@@ -1,5 +1,6 @@
 package com.controle.finansee.controller;
 
+import com.controle.finansee.dto.CriarDespesaResponseDTO;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import com.controle.finansee.model.user.User;
 import com.controle.finansee.dto.DespesaDTO;
@@ -10,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/despesas")
 @CrossOrigin(origins = "*") // Permite que o frontend (de qualquer origem) acesse a API
@@ -21,10 +20,10 @@ public class DespesaController {
     private DespesaService despesaService;
 
     @PostMapping
-    public ResponseEntity<DespesaDTO> criarDespesa(
+    public ResponseEntity<CriarDespesaResponseDTO> criarDespesa(
             @Valid @RequestBody DespesaDTO despesaDTO,
             @AuthenticationPrincipal User usuario) {
-        DespesaDTO novaDespesa = despesaService.criar(despesaDTO, usuario);
+        CriarDespesaResponseDTO novaDespesa = despesaService.criar(despesaDTO, usuario);
         return new ResponseEntity<>(novaDespesa, HttpStatus.CREATED);
     }
 

@@ -66,17 +66,17 @@ public class UserService {
     private void createDefaultCategoriesForUser(User user) {
         List<CategoriaPersonalizada> defaultCategories = List.of(
                 // --- Despesas Padrão ---
-                new CategoriaPersonalizada(null, "Alimentação", TipoCategoria.DESPESA, "#FF6347", user),
-                new CategoriaPersonalizada(null, "Transporte", TipoCategoria.DESPESA, "#4682B4", user),
-                new CategoriaPersonalizada(null, "Moradia", TipoCategoria.DESPESA, "#B22222", user),
-                new CategoriaPersonalizada(null, "Lazer", TipoCategoria.DESPESA, "#9370DB", user),
-                new CategoriaPersonalizada(null, "Saúde", TipoCategoria.DESPESA, "#FF4500", user),
-                new CategoriaPersonalizada(null, "Outras Despesas", TipoCategoria.DESPESA, "#A9A9A9", user),
+                new CategoriaPersonalizada(null, "Alimentação", TipoCategoria.DESPESA, "#FF6347",null,  user),
+                new CategoriaPersonalizada(null, "Transporte", TipoCategoria.DESPESA, "#4682B4", null,  user),
+                new CategoriaPersonalizada(null, "Moradia", TipoCategoria.DESPESA, "#B22222", null, user),
+                new CategoriaPersonalizada(null, "Lazer", TipoCategoria.DESPESA, "#9370DB", null, user),
+                new CategoriaPersonalizada(null, "Saúde", TipoCategoria.DESPESA, "#FF4500", null, user),
+                new CategoriaPersonalizada(null, "Outras Despesas", TipoCategoria.DESPESA, "#A9A9A9", null, user),
 
                 // --- Receitas Padrão ---
-                new CategoriaPersonalizada(null, "Salário", TipoCategoria.RECEITA, "#3CB371", user),
-                new CategoriaPersonalizada(null, "Renda Extra", TipoCategoria.RECEITA, "#FFD700", user),
-                new CategoriaPersonalizada(null, "Outras Receitas", TipoCategoria.RECEITA, "#90EE90", user)
+                new CategoriaPersonalizada(null, "Salário", TipoCategoria.RECEITA, "#3CB371", null, user),
+                new CategoriaPersonalizada(null, "Renda Extra", TipoCategoria.RECEITA, "#FFD700", null, user),
+                new CategoriaPersonalizada(null, "Outras Receitas", TipoCategoria.RECEITA, "#90EE90", null, user)
         );
 
         categoriaRepository.saveAll(defaultCategories);

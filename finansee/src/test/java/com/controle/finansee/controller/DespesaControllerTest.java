@@ -1,5 +1,6 @@
 package com.controle.finansee.controller;
 
+import com.controle.finansee.dto.CriarDespesaResponseDTO;
 import com.controle.finansee.dto.DespesaDTO;
 import com.controle.finansee.model.FormaPagamento;
 import com.controle.finansee.model.user.User;
@@ -53,7 +54,7 @@ class DespesaControllerTest {
     void criarDespesa_deveRetornarDespesaCriadaComStatus201() {
         when(despesaService.criar(despesaDTO, usuario)).thenReturn(despesaDTO);
 
-        ResponseEntity<DespesaDTO> response = despesaController.criarDespesa(despesaDTO, usuario);
+        ResponseEntity<CriarDespesaResponseDTO> response = despesaController.criarDespesa(despesaDTO, usuario);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isEqualTo(despesaDTO);

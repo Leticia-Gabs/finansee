@@ -41,4 +41,20 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long>, JpaSpec
             "GROUP BY c.nome, c.cor " +
             "ORDER BY SUM(d.valor) DESC")
     List<GastoPorCategoriaDTO> findGastosPorCategoriaParaDashboard(@Param("usuarioId") Long usuarioId);
+
+    /**
+     * Soma o valor de todas as despesas de uma categoria específica,
+     * para um usuário específico, dentro de um mês e ano específicos.
+     */
+    @Query("SELECT SUM(d.valor) FROM Despesa d " +
+            "WHERE d.usuario.id = :usuarioId " +
+            "AND d.categoria.id = :categoriaId " +
+            "AND YEAR(d.data) = :ano " +
+            "AND MONTH(d.data) = :mes")
+    BigDecimal sumByUsuarioAndCategoriaInMonth(
+            @Param("usuarioId") Long usuarioId,
+            @Param("categoriaId") Long categoriaId,
+            @Param("ano") int ano,
+            @Param("mes") int mes
+    );
 }

@@ -45,7 +45,6 @@ public class TransacaoController {
         List<TransacaoDTO> transacoes = transacaoService.listarTransacoes(
                 usuario, tipo, categoriaId, dataInicio, dataFim, valorMin, valorMax
         );
-        System.out.println("Listando transações!");
         return ResponseEntity.ok(transacoes);
     }
 }

@@ -1,6 +1,7 @@
 package com.controle.finansee.service;
 
 
+import com.controle.finansee.dto.CriarDespesaResponseDTO;
 import com.controle.finansee.dto.DespesaDTO;
 import com.controle.finansee.model.Despesa;
 
@@ -23,6 +24,9 @@ public class DespesaService {
 
     @Autowired
     private CategoriaPersonalizadaRepository categoriaRepository;
+
+    @Autowired
+    private AlertaOrcamentoService alertaOrcamentoService;
 
     // Metodo para mapear Entidade para DTO
     private DespesaDTO toDTO(Despesa despesa) {
@@ -81,10 +85,19 @@ public class DespesaService {
         return despesa;
     }
 
-    public DespesaDTO criar(DespesaDTO despesaDTO, User usuario) {
+    public CriarDespesaResponseDTO criar(DespesaDTO despesaDTO, User usuario) {
         Despesa despesa = toEntity(despesaDTO, usuario);
-        despesa = despesaRepository.save(despesa);
-        return toDTO(despesa);
+
+        // Salva primeiro para garantir que o valor entre no cálculo do banco
+        Despesa despesaSalva = despesaRepository.save(despesa);
+
+        // Verifica o orçamento usando a despesa já salva
+        String alerta = alertaOrcamentoService.verificarAlertaOrcamento(despesaSalva);
+
+        // Prepara o retorno
+        DespesaDTO dtoRetorno = toDTO(despesaSalva);
+
+        return new CriarDespesaResponseDTO(dtoRetorno, alerta);
     }
 
     public DespesaDTO atualizar(Long id, DespesaDTO despesaDTO, User usuario) {

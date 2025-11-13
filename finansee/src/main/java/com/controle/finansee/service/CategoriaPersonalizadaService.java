@@ -1,11 +1,13 @@
 package com.controle.finansee.service;
 import com.controle.finansee.dto.CategoriaDTO;
+import com.controle.finansee.model.TipoCategoria;
 import com.controle.finansee.model.user.User;
 import com.controle.finansee.model.CategoriaPersonalizada;
 import com.controle.finansee.repository.CategoriaPersonalizadaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,12 +17,31 @@ public class CategoriaPersonalizadaService {
     @Autowired
     private CategoriaPersonalizadaRepository repository;
 
-    private CategoriaDTO toDTO(CategoriaPersonalizada categoria) {
-        return new CategoriaDTO(categoria.getId(), categoria.getNome(), categoria.getTipo(), categoria.getCor());
+    private CategoriaPersonalizada toEntity(CategoriaDTO dto, User usuario) {
+        BigDecimal limite = dto.valorLimite();
+
+        // REGRA: Se for RECEITA, ignora o limite (salva como null)
+        if (dto.tipo() == TipoCategoria.RECEITA) {
+            limite = null;
+        }
+
+        return new CategoriaPersonalizada(
+                dto.id(),
+                dto.nome(),
+                dto.tipo(),
+                dto.cor(),
+                limite,
+                usuario
+        );
     }
 
-    private CategoriaPersonalizada toEntity(CategoriaDTO dto, User usuario) {
-        return new CategoriaPersonalizada(dto.id(), dto.nome(), dto.tipo(), dto.cor(), usuario);
+    private CategoriaDTO toDTO(CategoriaPersonalizada entity) {
+        return new CategoriaDTO(
+                entity.getId(),
+                entity.getNome(),
+                entity.getTipo(),
+                entity.getCor(),
+                entity.getValorLimite());
     }
 
     public List<CategoriaDTO> listarTodas(User usuario) {

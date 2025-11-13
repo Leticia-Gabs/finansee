@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "categorias_personalizadas", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"nome", "usuario_id"})
@@ -29,6 +31,9 @@ public class CategoriaPersonalizada {
 
     @Column(nullable = false)
     private String cor;
+
+    @Column(name = "valor_limite")
+    private BigDecimal valorLimite;
 
     // vinculo com o usuário
     @ManyToOne(fetch = FetchType.LAZY)
